@@ -7,7 +7,9 @@ import { MatButtonModule } from '@angular/material/button';
 
 import { MatCardModule } from '@angular/material/card'; // Import MatCardModule
 import { MatIconModule } from '@angular/material/icon'; // Import MatIconModule
-
+import { AuthService } from '../../services/auth/auth.service';
+import { MatSnackBar } from '@angular/material/snack-bar';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-signup',
@@ -30,7 +32,11 @@ export class SignupComponent {
   signupForm!: FormGroup;
   hidePassword = true;
 
-  constructor(private fb: FormBuilder){
+  constructor(private fb: FormBuilder, 
+    private authService: AuthService, 
+    private snackBar: MatSnackBar,
+    private router: Router
+  ){
     this.signupForm = this.fb.group({
        name:[null, [Validators.required]],
        email:[null, [Validators.required, Validators.email]],
@@ -47,6 +53,38 @@ export class SignupComponent {
 
   onSubmit(){
     console.log(this.signupForm.value);
+    const password = this.signupForm.get('password')?.value;
+    const confirmedPassword = this.signupForm.get('confirmedPassword')?.value;
+
+    if(password !== confirmedPassword){
+      this.snackBar.open('Passwords do not match', 'Close', {
+        duration: 5000,
+        panelClass:'error-snackbar',
+        horizontalPosition: 'center',
+        verticalPosition: 'top',
+      });
+      return;
+    }
+
+    this.authService.signup(this.signupForm.value).subscribe((response) => {
+      console.log(response);
+      if(response.userId != null){
+      this.snackBar.open('Signup successful', 'Close', {
+        duration: 5000,
+        panelClass:'success-snackbar',
+        horizontalPosition: 'center',
+        verticalPosition: 'top',
+      });
+      this.router.navigateByUrl('/login');
+    } else {
+        this.snackBar.open('Signup failed', 'Close', {
+          duration: 5000,
+          panelClass:'error-snackbar',
+          horizontalPosition: 'center',
+          verticalPosition: 'top',
+        });
+      }
+    });
   }
 }
 
