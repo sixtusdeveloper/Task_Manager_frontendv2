@@ -4,6 +4,7 @@ import { FormBuilder, FormGroup, ReactiveFormsModule, Validators } from '@angula
 import { MatFormFieldModule } from '@angular/material/form-field';
 import { MatInputModule } from '@angular/material/input';
 import { MatButtonModule } from '@angular/material/button';
+import { RouterModule } from '@angular/router';             // Import RouterModule for routerLink
 
 import { MatCardModule } from '@angular/material/card'; // Import MatCardModule
 import { MatIconModule } from '@angular/material/icon'; // Import MatIconModule
@@ -18,6 +19,7 @@ import { MatIconModule } from '@angular/material/icon'; // Import MatIconModule
     MatFormFieldModule,
     MatInputModule,
     MatButtonModule,
+    RouterModule, // Required for routerLink
     MatCardModule,  // Add MatCardModule
     MatIconModule,  // Add MatIconModule
   ],
@@ -32,10 +34,8 @@ export class LoginComponent {
 
   constructor(private fb: FormBuilder){
     this.loginForm = this.fb.group({
-       name:[null, [Validators.required]],
        email:[null, [Validators.required, Validators.email]],
        password:[null, [Validators.required]],
-       confirmPassword:[null, [Validators.required]],
 
     })
 

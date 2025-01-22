@@ -41,8 +41,8 @@
           </button>
           <mat-error
             *ngIf="
-              signupForm.controls['password'].invalid &&
-              signupForm.controls['password'].touched
+              loginForm.controls['password'].invalid &&
+              loginForm.controls['password'].touched
             "
           >
             Please enter a valid password!
@@ -63,8 +63,9 @@
     </mat-card-content>
 
     <mat-card-actions>
-      <button mat-button routerLinkActive="active" routerLink="/signup">
+      <button mat-button color="accent" routerLink="/signup">
         Don't have an account? Sign up
       </button>
+    </mat-card-actions>
   </mat-card>
 </div>
