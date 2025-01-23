@@ -54,9 +54,9 @@ export class SignupComponent {
   onSubmit(){
     console.log(this.signupForm.value);
     const password = this.signupForm.get('password')?.value;
-    const confirmedPassword = this.signupForm.get('confirmedPassword')?.value;
+    const confirmPassword = this.signupForm.get('confirmPassword')?.value;
 
-    if(password !== confirmedPassword){
+    if(password !== confirmPassword){
       this.snackBar.open('Passwords do not match', 'Close', {
         duration: 5000,
         panelClass:'error-snackbar',
@@ -68,7 +68,7 @@ export class SignupComponent {
 
     this.authService.signup(this.signupForm.value).subscribe((response) => {
       console.log(response);
-      if(response.userId != null){
+      if(response.id != null){
       this.snackBar.open('Signup successful', 'Close', {
         duration: 5000,
         panelClass:'success-snackbar',
