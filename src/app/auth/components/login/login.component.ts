@@ -8,6 +8,8 @@ import { RouterModule } from '@angular/router';             // Import RouterModu
 
 import { MatCardModule } from '@angular/material/card'; // Import MatCardModule
 import { MatIconModule } from '@angular/material/icon'; // Import MatIconModule
+import { MatSnackBar } from '@angular/material/snack-bar';
+import { AuthService } from '../../services/auth/auth.service';
 
 
 @Component({
@@ -32,7 +34,10 @@ export class LoginComponent {
   loginForm!: FormGroup;
   hidePassword = true;
 
-  constructor(private fb: FormBuilder){
+  constructor(private fb: FormBuilder,
+    private authService: AuthService,
+    private snackBar: MatSnackBar,
+  ){
     this.loginForm = this.fb.group({
        email:[null, [Validators.required, Validators.email]],
        password:[null, [Validators.required]],
@@ -47,6 +52,26 @@ export class LoginComponent {
 
   onSubmit(){
     console.log(this.loginForm.value);
+    this.authService.login(this.loginForm.value).subscribe(
+      (response) => {
+       console.log(response);
+       if(response.userId !== null){
+         this.snackBar.open('Login Successful', 'Close', {
+          duration: 5000,
+          panelClass:'success-snackbar',
+          horizontalPosition: 'center',
+          verticalPosition: 'top',
+         })}
+         else{
+            this.snackBar.open('Invalid Credentials', 'Close', {
+              duration: 5000,
+              panelClass:'error-snackbar',
+              horizontalPosition: 'center',
+              verticalPosition: 'top',
+            })
+         }
+        
+      });
   }
 }
 
