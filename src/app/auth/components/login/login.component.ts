@@ -63,7 +63,7 @@ export class LoginComponent {
           verticalPosition: 'top',
          })}
          else{
-            this.snackBar.open('Invalid Credentials', 'Close', {
+            this.snackBar.open('Invalid Credentials!', 'Close', {
               duration: 5000,
               panelClass:'error-snackbar',
               horizontalPosition: 'center',
