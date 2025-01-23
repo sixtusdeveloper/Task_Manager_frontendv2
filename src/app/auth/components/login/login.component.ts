@@ -4,12 +4,13 @@ import { FormBuilder, FormGroup, ReactiveFormsModule, Validators } from '@angula
 import { MatFormFieldModule } from '@angular/material/form-field';
 import { MatInputModule } from '@angular/material/input';
 import { MatButtonModule } from '@angular/material/button';
-import { RouterModule } from '@angular/router';             // Import RouterModule for routerLink
+import { Router, RouterModule } from '@angular/router';             // Import RouterModule for routerLink
 
 import { MatCardModule } from '@angular/material/card'; // Import MatCardModule
 import { MatIconModule } from '@angular/material/icon'; // Import MatIconModule
 import { MatSnackBar } from '@angular/material/snack-bar';
 import { AuthService } from '../../services/auth/auth.service';
+import { StorageService } from '../../services/storage/storage.service';
 
 
 @Component({
@@ -37,6 +38,7 @@ export class LoginComponent {
   constructor(private fb: FormBuilder,
     private authService: AuthService,
     private snackBar: MatSnackBar,
+    private router: Router,
   ){
     this.loginForm = this.fb.group({
        email:[null, [Validators.required, Validators.email]],
@@ -56,20 +58,35 @@ export class LoginComponent {
       (response) => {
        console.log(response);
        if(response.userId !== null){
+         const user = {
+            id: response.userId,
+            role: response.userRole,
+          }
+
+          StorageService.saveUser(user);
+          StorageService.setToken(response.jwt);
+
+          if(StorageService.isAdminLoggedIn()){
+            this.router.navigateByUrl('/admin/dashboard');
+          }
+          else if(StorageService.isEmployeeLoggedIn()){
+            this.router.navigateByUrl('/employee/dashboard');
+          }
          this.snackBar.open('Login Successful', 'Close', {
           duration: 5000,
           panelClass:'success-snackbar',
           horizontalPosition: 'center',
           verticalPosition: 'top',
-         })}
-         else{
-            this.snackBar.open('Invalid Credentials!', 'Close', {
-              duration: 5000,
-              panelClass:'error-snackbar',
-              horizontalPosition: 'center',
-              verticalPosition: 'top',
-            })
-         }
+        });
+      }
+        else{
+          this.snackBar.open('Invalid Credentials!', 'Close', {
+            duration: 5000,
+            panelClass:'error-snackbar',
+            horizontalPosition: 'center',
+            verticalPosition: 'top',
+          })
+        }
         
       });
   }
