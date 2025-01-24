@@ -2,8 +2,11 @@ import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { Observable } from 'rxjs';
 import { StorageService } from '../../../auth/services/storage/storage.service';
+// import { environment } from '../../../../environments/environment';
 
-const BASE_URL = 'http://localhost:8080/';  // Added trailing slash to the BASE_URL
+const BASE_URL = ''; // Use proxied base URL
+// const BASE_URL = environment.apiUrl; // Use environment apiUrl
+// const BASE_URL = 'http://localhost:8080/';  // Added trailing slash to the BASE_URL
 
 @Injectable({
   providedIn: 'root'
