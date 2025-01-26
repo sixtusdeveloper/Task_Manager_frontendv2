@@ -9,6 +9,13 @@ import { provideHttpClient, withInterceptorsFromDi } from '@angular/common/http'
 import { MatCardModule } from '@angular/material/card';
 import { MatIconModule } from '@angular/material/icon';
 
+import { MatFormFieldModule } from '@angular/material/form-field';
+import { MatInputModule } from '@angular/material/input';
+import { MatSelectModule } from '@angular/material/select';
+import { MatButtonModule } from '@angular/material/button';
+import { MatDatepickerModule } from '@angular/material/datepicker';
+import { MatNativeDateModule } from '@angular/material/core';
+
 @NgModule({
   declarations: [],
   imports: [
@@ -20,6 +27,13 @@ import { MatIconModule } from '@angular/material/icon';
     FormsModule,
     MatCardModule,
     MatIconModule,
+    // Angular Material Modules
+    MatFormFieldModule,
+    MatInputModule,
+    MatSelectModule,
+    MatButtonModule,
+    MatDatepickerModule,
+    MatNativeDateModule,
   ],
   providers: [
     provideHttpClient(withInterceptorsFromDi())  // Make sure this is in the providers array
@@ -28,39 +42,4 @@ import { MatIconModule } from '@angular/material/icon';
 })
 export class AppModule {}
 
-
-
-
-
-// PREVIOUS consumerDestroy, GETING A STRIKE ERROR ON THE HTTPCLIENTMODULE ABOUT IT DEPLICATION DUE TO IT OUTDATED VERSION. Swictching to the new version of the HttpClient module which provideHttpClient method to avoid the error
-
-// import { NgModule } from '@angular/core';
-// import { BrowserModule } from '@angular/platform-browser';
-// import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
-// import { AppRoutingModule } from './app-routing.module';
-// import { DemoAngularMaterialModule } from './DemoAngularMaterialModule';
-// import { FormsModule, ReactiveFormsModule } from '@angular/forms';
-// import { HttpClientModule } from '@angular/common/http';  // Required for HttpClient
-// // Angular Material Modules
-// import { MatCardModule } from '@angular/material/card';
-// import { MatIconModule } from '@angular/material/icon';
-
-// @NgModule({
-//     declarations: [], // No standalone components here
-//     imports: [
-//         BrowserModule,
-//         BrowserAnimationsModule,
-//         AppRoutingModule,
-//         DemoAngularMaterialModule, // Other modules
-//         ReactiveFormsModule,
-//         FormsModule,
-//         MatCardModule,  // Required for mat-card
-//         MatIconModule,  // Required for mat-icon
-//         HttpClientModule // Required for HttpClient
-        
-//     ],
-//     providers: [],
-//     bootstrap: [], // Standalone components are bootstrapped directly
-// })
-// export class AppModule {}
 
