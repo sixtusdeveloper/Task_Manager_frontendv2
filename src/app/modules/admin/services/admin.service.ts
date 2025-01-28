@@ -23,6 +23,11 @@ export class AdminService {
     return this.http.post(BASE_URL + "api/admin/task", taskDTO, { headers: this.createAuthorizationHeader() });
   }
 
+  getAllTask(): Observable<any> {
+    return this.http.get(BASE_URL + "api/admin/tasks", { headers: this.createAuthorizationHeader() });
+  }
+
+
   private createAuthorizationHeader(): HttpHeaders {
     return new HttpHeaders().set('Authorization', 'Bearer ' + StorageService.getToken());
 
