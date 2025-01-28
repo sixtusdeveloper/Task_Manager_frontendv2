@@ -54,7 +54,7 @@ export class PostTaskComponent {
   postTask() {
     console.log(this.taskForm.value);
     this.adminService.postTask(this.taskForm.value).subscribe((response) => {
-      if(response.id !== null){
+      if(response.id != null){
         this.snackBar.open('Task posted successfully', 'Close', {
           duration: 5000,
         });
