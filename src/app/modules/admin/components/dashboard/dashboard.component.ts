@@ -9,6 +9,9 @@ import { MatSnackBar } from '@angular/material/snack-bar';
 import { MatIconModule } from "@angular/material/icon";
 import { RouterModule } from '@angular/router'; 
 import { MatFormFieldModule } from "@angular/material/form-field";
+import { MatInputModule } from "@angular/material/input";
+import { ReactiveFormsModule } from '@angular/forms';
+
 
 @Component({
   selector: 'app-dashboard',
@@ -20,6 +23,9 @@ import { MatFormFieldModule } from "@angular/material/form-field";
     MatIconModule,
     RouterModule,
     MatFormFieldModule,
+    MatInputModule,
+    ReactiveFormsModule, // Add ReactiveFormsModule for form handling
+
   ],
   templateUrl: './dashboard.component.html',
   styleUrls: ['./dashboard.component.scss']
@@ -27,7 +33,7 @@ import { MatFormFieldModule } from "@angular/material/form-field";
 export class DashboardComponent {
 
   listOfTasks: any = [];
-  pageSize = 5;          // Default page size
+  pageSize = 6;          // Default page size
   pageIndex = 0;         // Default page index (first page)
   totalTasks = 0;        // Total number of tasks (for pagination)
 
