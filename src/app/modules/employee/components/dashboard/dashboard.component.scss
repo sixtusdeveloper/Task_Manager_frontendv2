@@ -28,79 +28,108 @@
         box-shadow: 0 6px 15px rgba(0, 0, 0, 0.15);
       }
   
-      .task-details {
-        display: flex;
-        flex-direction: column;
-        gap: 10px;
-  
-        .task-name {
-            font-size: 1.25rem;
-            font-weight: bold;
-            margin: 0 0 0.5rem;
-            color: #3f51b5;
-            word-wrap: break-word;
-        }
-  
-        .task-description {
-            font-size: 0.95rem;
-            color: #616161;
-            margin-bottom: 1rem;
-            line-height: 1.5;
-        }
-  
-        mat-divider {
-          margin: 10px 0;
-        }
-  
-        .task-info {
-          display: flex;
-          flex-direction: column;
-          gap: 8px;
-  
-          .info-row {
+       .task-details {
             display: flex;
-            justify-content: space-between;
-            font-size: 0.95rem;
-            color: #444;
-  
-            .info-label {
-              font-weight: 600;
-              color: #555;
+            flex-direction: column;
+            gap: 10px;
+    
+            .task-name {
+                font-size: 1.25rem;
+                font-weight: bold;
+                margin: 0 0 0.5rem;
+                color: #3f51b5;
+                word-wrap: break-word;
+            }
+    
+            .task-description {
+                font-size: 0.95rem;
+                color: #616161;
+                margin-bottom: 1rem;
+                line-height: 1.5;
             }
   
-            .info-value {
-              font-weight: 400;
-              color: #777;
+            mat-divider {
+            margin: 10px 0;
             }
-          }
+    
+            .task-info {
+                display: flex;
+                flex-direction: column;
+                gap: 8px;
+  
+                .info-row {
+                    display: flex;
+                    justify-content: space-between;
+                    font-size: 0.95rem;
+                    color: #444;
+  
+                    .info-label {
+                    font-weight: 600;
+                    color: #555;
+                    }
+  
+                    .info-value {
+                    font-weight: 400;
+                    color: #777;
+                    }
+                }
+            }
+  
+            .actions {
+                display: flex;
+                justify-content: flex-end;
+                gap: 0.5rem;
+                margin-top: 2px;
+    
+                button, .update-button{
+                    display: flex;
+                    align-items: center;
+                    justify-content: center;
+                    width: 36px;margin: 4px 0.5rem;
+                    cursor: pointer;
+                    height: 36px;
+                    text-align: center;
+                    border-radius: 50%;
+                    transition: background-color 0.3s ease;
+        
+                    &.view-button {
+                    background-color: #e3f2fd;
+                    &:hover {
+                        background-color: #bbdefb;
+                    }
+                    }
+        
+                    &.update-button {
+                    background-color: #e8f5e9;
+                    border: 1px solid #ffebee;
+                    border-radius: 50%;
+                    text-decoration: none;
+                    color: indigo;
+                    text-align: center;
+                    &:hover {
+                        background-color: #c8e6c9;
+                    }
+                    }
+        
+                    &.delete-button {
+                    background-color: #ffebee;
+                    border: 1px solid #ffebee;
+                    border-radius: 50%;
+                    text-align: center;
+                    color: rgb(189, 17, 17);
+                    &:hover {
+                        background-color: #ffcdd2;
+                    }
+                    }
+        
+                    mat-icon {
+                    font-size: 1.2rem;
+                    color: inherit;
+                    }
+                }
+            }
+            
         }
-  
-        .actions {
-          display: flex;
-          justify-content: flex-end;
-          margin-top: 10px;
-  
-          .update-button {
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            background-color: #007bff;
-            color: white;
-            border-radius: 50%;
-            width: 36px;
-            height: 36px;
-            transition: background-color 0.3s ease-in-out;
-  
-            &:hover {
-              background-color: #0056b3;
-            }
-  
-            mat-icon {
-              font-size: 20px;
-            }
-          }
-        }
-      }
     }
   }
 }
