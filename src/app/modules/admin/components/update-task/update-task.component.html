@@ -44,7 +44,7 @@
 
     <mat-form-field appearance="outline" class="form-field">
       <mat-label>Select the Priority</mat-label>
-      <mat-select formControlName="priority">
+      <mat-select formControlName="priority" name="priority">
         <mat-option
           [value]="priority"
           *ngFor="let priority of listOfPriorities"
@@ -53,6 +53,18 @@
         </mat-option>
       </mat-select>
       <mat-error *ngIf="updateTaskForm.get('priority')?.hasError('required')">
+        This input is required
+      </mat-error>
+    </mat-form-field>
+
+    <mat-form-field appearance="outline" class="form-field">
+      <mat-label>Select Task Status</mat-label>
+      <mat-select formControlName="taskStatus" name="taskStatus">
+        <mat-option [value]="status" *ngFor="let status of listOfTaskStatus">
+          {{ status }}
+        </mat-option>
+      </mat-select>
+      <mat-error *ngIf="updateTaskForm.get('taskStatus')?.hasError('required')">
         This input is required
       </mat-error>
     </mat-form-field>
