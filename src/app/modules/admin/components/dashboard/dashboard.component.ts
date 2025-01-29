@@ -10,7 +10,7 @@ import { MatIconModule } from "@angular/material/icon";
 import { RouterModule } from '@angular/router'; 
 import { MatFormFieldModule } from "@angular/material/form-field";
 import { MatInputModule } from "@angular/material/input";
-import { ReactiveFormsModule } from '@angular/forms';
+import { FormBuilder, FormGroup, ReactiveFormsModule } from '@angular/forms';
 
 
 @Component({
@@ -33,12 +33,20 @@ import { ReactiveFormsModule } from '@angular/forms';
 export class DashboardComponent {
 
   listOfTasks: any = [];
+  searchForm!: FormGroup;
   pageSize = 6;          // Default page size
   pageIndex = 0;         // Default page index (first page)
   totalTasks = 0;        // Total number of tasks (for pagination)
 
-  constructor(private service: AdminService, private snackBar: MatSnackBar) {
+  constructor(private service: AdminService, 
+    private snackBar: MatSnackBar, 
+    private router: RouterModule, 
+    private fb: FormBuilder) {
     this.getTasks();  // Fetch the first page of tasks
+    this.searchForm = this.fb.group({
+      title: [null],
+    });
+
   }
 
   // Fetch tasks based on page size and index
@@ -62,6 +70,16 @@ export class DashboardComponent {
         duration: 5000,
       });
       this.getTasks();  // Fetch the updated list of tasks after deletion
+    });
+  }
+
+  searchTask() {
+    this.listOfTasks = [];
+    const title = this.searchForm.get('title')!.value;
+    console.log(title);
+    this.service.searchTask(title).subscribe((response) => {
+      console.log(response);
+      this.listOfTasks = response;
     });
   }
 }

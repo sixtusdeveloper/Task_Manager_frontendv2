@@ -1,8 +1,8 @@
 <section class="container">
-  <form class="search-form">
+  <form class="search-form" [formGroup]="searchForm">
     <mat-form-field appearance="outline" class="search-input">
       <mat-label>Search by keyword or title</mat-label>
-      <input matInput />
+      <input matInput formControlName="title" (input)="searchTask()" />
     </mat-form-field>
   </form>
   <h2 class="title">Task List(s)</h2>
