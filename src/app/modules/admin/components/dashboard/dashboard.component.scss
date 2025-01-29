@@ -31,7 +31,7 @@
         display: flex;
         flex-direction: column;
         justify-content: space-between;
-        backround: #ffffff;
+        background: #ffffff;
         border: 1px solid #e0e0e0;
         border-radius: 12px;
         box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
@@ -115,6 +115,9 @@
     
                 &.delete-button {
                 background-color: #ffebee;
+                border: 1px solid #ffebee;
+                border-radius: 50%;
+                color: rgb(189, 17, 17);
                 &:hover {
                     background-color: #ffcdd2;
                 }

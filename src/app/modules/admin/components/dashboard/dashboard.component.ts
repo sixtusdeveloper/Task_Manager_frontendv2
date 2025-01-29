@@ -5,6 +5,8 @@ import { MatCardModule } from '@angular/material/card';
 import { MatDividerModule } from '@angular/material/divider'; 
 import { MatPaginatorModule } from '@angular/material/paginator';
 import { PageEvent } from '@angular/material/paginator';
+import { MatSnackBar } from '@angular/material/snack-bar';
+import { MatIconModule } from "@angular/material/icon";
 
 @Component({
   selector: 'app-dashboard',
@@ -13,6 +15,7 @@ import { PageEvent } from '@angular/material/paginator';
     MatCardModule,
     MatDividerModule,
     MatPaginatorModule,
+    MatIconModule,
   ],
   templateUrl: './dashboard.component.html',
   styleUrls: ['./dashboard.component.scss']
@@ -24,7 +27,7 @@ export class DashboardComponent {
   pageIndex = 0;         // Default page index (first page)
   totalTasks = 0;        // Total number of tasks (for pagination)
 
-  constructor(private service: AdminService) {
+  constructor(private service: AdminService, private snackBar: MatSnackBar) {
     this.getTasks();  // Fetch the first page of tasks
   }
 
@@ -41,6 +44,15 @@ export class DashboardComponent {
     this.pageIndex = event.pageIndex;
     this.pageSize = event.pageSize;
     this.getTasks();  // Fetch the new page of tasks based on the new page index and size
+  }
+
+  deleteTask(id: number) {
+    this.service.deleteTask(id).subscribe((response) => {
+      this.snackBar.open('Task deleted successfully', 'Close', {
+        duration: 5000,
+      });
+      this.getTasks();  // Fetch the updated list of tasks after deletion
+    });
   }
 }
 

@@ -27,6 +27,12 @@ export class AdminService {
     return this.http.get(BASE_URL + "api/admin/tasks", { headers: this.createAuthorizationHeader() });
   }
 
+  
+  deleteTask(id: number): Observable<any> {
+    return this.http.delete(BASE_URL + "api/admin/task/" + id, { headers: this.createAuthorizationHeader() });
+  }
+
+
   // New method for fetching paginated tasks
   getPaginatedTasks(page: number, size: number): Observable<any> {
     return this.http.get(
