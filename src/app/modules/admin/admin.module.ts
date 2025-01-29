@@ -4,6 +4,8 @@ import { AdminRoutingModule } from './admin-routing.module';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { provideHttpClient, withInterceptorsFromDi } from '@angular/common/http';
 import { DemoAngularMaterialModule } from '../../DemoAngularMaterialModule';
+import { DashboardComponent } from './components/dashboard/dashboard.component';
+import { MatCardModule } from '@angular/material/card';
 
 @NgModule({
   declarations: [],
@@ -13,6 +15,7 @@ import { DemoAngularMaterialModule } from '../../DemoAngularMaterialModule';
     FormsModule,
     ReactiveFormsModule,
     DemoAngularMaterialModule,
+    MatCardModule,
    
   ],
 
