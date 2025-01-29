@@ -7,6 +7,7 @@ import { MatPaginatorModule } from '@angular/material/paginator';
 import { PageEvent } from '@angular/material/paginator';
 import { MatSnackBar } from '@angular/material/snack-bar';
 import { MatIconModule } from "@angular/material/icon";
+import { RouterModule } from '@angular/router'; 
 
 @Component({
   selector: 'app-dashboard',
@@ -16,6 +17,7 @@ import { MatIconModule } from "@angular/material/icon";
     MatDividerModule,
     MatPaginatorModule,
     MatIconModule,
+    RouterModule,
   ],
   templateUrl: './dashboard.component.html',
   styleUrls: ['./dashboard.component.scss']

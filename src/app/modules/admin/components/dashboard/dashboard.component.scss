@@ -90,12 +90,14 @@
             gap: 0.5rem;
             margin-top: 1rem;
     
-            button {
+            button, .update-button, .delete-button {
                 display: flex;
                 align-items: center;
                 justify-content: center;
-                width: 36px;
+                width: 36px;margin: 4px 0.5rem;
+                cursor: pointer;
                 height: 36px;
+                text-align: center;
                 border-radius: 50%;
                 transition: background-color 0.3s ease;
     
@@ -108,6 +110,11 @@
     
                 &.update-button {
                 background-color: #e8f5e9;
+                border: 1px solid #ffebee;
+                border-radius: 50%;
+                text-decoration: none;
+                color: indigo;
+                text-align: center;
                 &:hover {
                     background-color: #c8e6c9;
                 }
@@ -117,6 +124,7 @@
                 background-color: #ffebee;
                 border: 1px solid #ffebee;
                 border-radius: 50%;
+                text-align: center;
                 color: rgb(189, 17, 17);
                 &:hover {
                     background-color: #ffcdd2;

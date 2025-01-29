@@ -1,0 +1,104 @@
+// Base styles
+.container {
+    max-width: 600px;
+    margin: 2rem auto;
+    padding: 2rem;
+    background: #f9f9f9; // Subtle background color
+    border-radius: 8px; // Rounded corners
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1); // Light shadow
+  }
+  
+  h2 {
+    font-size: 1.8rem;
+    margin-bottom: 1.5rem;
+    color: #333; // Darker text color
+    text-align: center;
+    font-weight: bold;
+  }
+  
+  // Form styles
+  form {
+    display: flex;
+    flex-direction: column;
+    gap: 1.5rem; // Space between fields
+  }
+  
+  .form-field {
+    width: 100%;
+  }
+  
+  // Input field styles
+  mat-form-field {
+    width: 100%;
+  
+    mat-label {
+      font-size: 1rem;
+      color: #666; // Subtle label color
+    }
+  
+    input,
+    textarea,
+    mat-select {
+      font-size: 1rem;
+    }
+  
+    mat-error {
+      font-size: 0.875rem;
+      color: #e53935; // Red for errors
+      font-weight: bold;
+    }
+  
+    &.mat-form-field-appearance-outline {
+      .mat-form-field-outline {
+        stroke-width: 2px;
+        stroke: #3f51b5; // Primary color for outline
+      }
+  
+      .mat-form-field-label {
+        color: #3f51b5; // Primary color for label
+      }
+  
+      &:focus-within {
+        .mat-form-field-outline {
+          stroke: #303f9f; // Darker shade on focus
+        }
+  
+        .mat-form-field-label {
+          color: #303f9f;
+        }
+      }
+    }
+  }
+  
+  // Button styles
+  button[type="submit"] {
+    padding: 0.75rem 2rem;
+    font-size: 1rem;
+    border-radius: 4px;
+    text-transform: uppercase;
+    font-weight: bold;
+    transition: background-color 0.3s;
+  
+    &:disabled {
+      background: #e0e0e0; // Disabled state
+      color: #9e9e9e;
+      cursor: not-allowed;
+    }
+  
+    &:hover:not(:disabled) {
+      background: #303f9f; // Darker shade on hover
+    }
+  }
+  
+  // Priority and Employee dropdown
+  mat-select {
+    mat-option {
+      font-size: 1rem;
+      padding: 0.5rem 1rem;
+  
+      &:hover {
+        background: #e3f2fd; // Light hover effect
+      }
+    }
+  }
+  

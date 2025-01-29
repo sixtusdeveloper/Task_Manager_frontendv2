@@ -23,6 +23,10 @@ export class AdminService {
     return this.http.post(BASE_URL + "api/admin/task", taskDTO, { headers: this.createAuthorizationHeader() });
   }
 
+  updateTask(id: number, taskDTO: any): Observable<any> {
+    return this.http.put(BASE_URL + `api/admin/task/${id}`, taskDTO, { headers: this.createAuthorizationHeader() });
+  }
+
   getAllTasks(): Observable<any> {
     return this.http.get(BASE_URL + "api/admin/tasks", { headers: this.createAuthorizationHeader() });
   }
@@ -35,7 +39,6 @@ export class AdminService {
   getTaskById(id: number): Observable<any> {
     return this.http.get(BASE_URL + "api/admin/task/" + id, { headers: this.createAuthorizationHeader() });
   }
-
 
   // New method for fetching paginated tasks
   getPaginatedTasks(page: number, size: number): Observable<any> {
