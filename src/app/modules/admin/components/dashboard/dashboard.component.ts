@@ -8,6 +8,7 @@ import { PageEvent } from '@angular/material/paginator';
 import { MatSnackBar } from '@angular/material/snack-bar';
 import { MatIconModule } from "@angular/material/icon";
 import { RouterModule } from '@angular/router'; 
+import { MatFormFieldModule } from "@angular/material/form-field";
 
 @Component({
   selector: 'app-dashboard',
@@ -18,6 +19,7 @@ import { RouterModule } from '@angular/router';
     MatPaginatorModule,
     MatIconModule,
     RouterModule,
+    MatFormFieldModule,
   ],
   templateUrl: './dashboard.component.html',
   styleUrls: ['./dashboard.component.scss']
