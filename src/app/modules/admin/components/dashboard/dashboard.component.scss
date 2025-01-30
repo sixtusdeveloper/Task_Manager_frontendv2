@@ -34,9 +34,9 @@
         display: flex;
         justify-content: center;
         margin: 1.5rem auto;
-        font-size: 1rem;
-        color: #555;
-        font-weight: 500;
+        font-size: 14px;
+        color: #777;
+        
     }
 
     .task-list {
@@ -133,6 +133,11 @@
             
                         &.view-button {
                         background-color: #e3f2fd;
+                        margin-right: 0.5rem;
+                        border: none;
+                        color: #0d47a1;
+                        text-align: center;
+
                         &:hover {
                             background-color: #bbdefb;
                         }
