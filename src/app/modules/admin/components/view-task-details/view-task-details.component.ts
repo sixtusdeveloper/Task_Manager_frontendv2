@@ -1,4 +1,5 @@
-import { Component } from '@angular/core';
+// import { Component } from '@angular/core';
+import { Component, ViewEncapsulation } from '@angular/core';
 import { AdminService } from '../../services/admin.service';
 import { ActivatedRoute } from '@angular/router';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
@@ -28,13 +29,15 @@ import { ReactiveFormsModule } from '@angular/forms'; // ✅ Import this
     MatInputModule, // ✅ Add this
   ],
   templateUrl: './view-task-details.component.html',
-  styleUrl: './view-task-details.component.scss'
+  styleUrls: ['./view-task-details.component.scss'],
+  encapsulation: ViewEncapsulation.None,
 })
 export class ViewTaskDetailsComponent {
 
   taskId: number;
   taskData: any;
   commentForm!: FormGroup;
+  comments: any;
 
   constructor(private service: AdminService, 
     private activatedRoute: ActivatedRoute, 
@@ -48,6 +51,7 @@ export class ViewTaskDetailsComponent {
 
   ngOnInit() {
     this.getTaskById();
+    this.getComments();
     this.commentForm = this.fb.group({
       comment: [null, Validators.required],
     });
@@ -60,6 +64,13 @@ export class ViewTaskDetailsComponent {
     });
   }
 
+  getComments() {
+    this.service.getCommentsByTask(this.taskId).subscribe((response) => {
+      this.comments = response;
+      console.log(response);
+    });
+  }
+
   publishComment() {
     console.log(this.commentForm.value);
     this.service.createComment(this.taskId, this.commentForm.get("content")?.value).subscribe((response) => {
@@ -67,7 +78,7 @@ export class ViewTaskDetailsComponent {
         this.snackBar.open('Comment published successfully', 'Close', {
           duration: 5000,
         });
-        this.getTaskById();
+        this.getComments();
       }else{
         this.snackBar.open('An error occured while publishing comment', 'Close', {
           duration: 5000,

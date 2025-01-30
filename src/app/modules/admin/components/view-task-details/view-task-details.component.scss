@@ -23,7 +23,7 @@
         margin-bottom: 5px;
         color: #333;
         text-align: start;
-        padding: 1.5rem;
+        padding: 1rem;
         font-weight: bold;
     }
 
@@ -207,4 +207,38 @@
             }
         }
     }
+    
+    mat-card-subtitle {
+        font-size: 0.85rem;
+        color: #666;
+    
+    }
+
+    .example-header-image{
+    background-image: url('https://material.angular.io/assets/img/examples/shiba1.jpg');
+    background-size: cover;
+    }
+
+    .mat-cad-footer{
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-left: 10px;
+    }
+
+    .img{
+    object-fit: cover;
+    }
+   
+    .comments{
+      text-align: start;
+      width: 100%;
+      padding: 10px;
+    }
+    
+    .comment-content{
+        padding: 1rem;
+        margin: 10px 0;
+    }
+      
 }
