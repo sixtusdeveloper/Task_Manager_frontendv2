@@ -1,3 +1,19 @@
+// Ensure the whole page takes full height
+body, html {
+    margin: 0;
+    padding: 0;
+    height: 100%;
+    background-color: floralwhite;
+  }
+  
+  // Make sure app-root stretches to full height
+  app-root {
+    display: flex;
+    flex-direction: column;
+    min-height: 100vh;
+  }
+
+
 .navbar {
     display: flex;
     justify-content: space-between;
@@ -8,9 +24,19 @@
     left: 0;
     width: 100%;      // ✅ Full width
     z-index: 1000;    // ✅ Ensures it stays above other content
-    background-color: #1976d2; // Same as MatToolbar primary color
+    // background-color: #1976d2; // Same as MatToolbar primary color
+    background: #1e1e1e;
     color: white;
     box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1); // Optional shadow effect
+}
+
+.nav-links button:hover {
+   color: #ffcc5c !important;
+   font-size: 15px !important;
+}
+.nav-links button.active {
+   color: #ffcc5c !important;
+   font-size: 15px !important;
 }
 
 .logo-container {
@@ -25,12 +51,12 @@
   }
   
   .navbar-brand {
-    font-size: 1.2rem;
-    font-weight: bold;
-    background: linear-gradient(45deg, #ff6b6b, #ffcc5c);
-    -webkit-background-clip: text;
-    background-clip: text;
-    -webkit-text-fill-color: transparent;
+    font-size: 15px !important;
+    font-weight: 500 !important;
+    background: linear-gradient(45deg, #ff6b6b, #ffcc5c) !important;
+    -webkit-background-clip: text !important;
+    background-clip: text !important;
+    -webkit-text-fill-color: transparent !important;
   }
 
 .spacer {
@@ -38,14 +64,14 @@
 }
 
 button {
-    text-transform: uppercase;
+    text-transform: capitalize;
     color: white;
     margin-left: 8px;
     cursor: pointer;
 }
 
 button.active {
-   font-weight: 600;
+   font-weight: normal;
 }
 
 .custom-toolbar {
@@ -95,71 +121,79 @@ router-outlet {
 }
 
 
+.footer {
+    margin-top: auto;
+    background: #1e1e1e;
+    color: white;
+    padding: 2rem 1rem;
+    text-align: center;
+  }
+  
+  .footer-container {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+  }
+  
+  .footer-brand {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    text-align: center;
+    max-width: 400px;
+  }
+  
+  .footer-logo {
+    width: 50px; // Adjust as needed
+    height: auto;
+    margin-bottom: 10px;
+  }
+  
+  .footer-description {
+    font-size: 14px;
+    color: #bbbbbb;
+    margin-bottom: 20px;
+  }
+  
+  .footer-links {
+    display: flex;
+    gap: 15px;
+    margin-bottom: 20px;
+  }
+  
+  .footer-links a {
+    color: white;
+    text-decoration: none;
+    font-weight: 500;
+    transition: color 0.3s ease-in-out;
+  }
+  
+  .footer-links a:hover {
+    color: #ffcc5c;
+  }
+  
+  .footer-bottom {
+    font-size: 12px;
+    color: #bbbbbb;
+  }
+  
+  
+button.nav-link{
+    font-size: 15px !important;
+    font-weight: 500 !important;
 
+}
 
-// .navbar {
-//     display: flex;
-//     justify-content: space-between;
-//     align-items: center;
-//     padding: 0 1rem;
-//     position: fixed;
-//     top: 0;
-//     left: 0;
-//     width: 100%;
-//     z-index: 1000;
-//     background-color: #1976d2;
-//     color: white;
-//     box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
-// }
+.navbar-text{
+    font-size: 15px !important;
+    font-weight: 500 !important;
+    margin-left: 10px;
+}
 
-// .navbar-brand {
-//     font-size: 1.5rem;
-//     font-weight: medium;
-//     margin-right: 1rem;
-// }
+.nav-link.notallowed{
+    cursor: not-allowed;
+}
 
-// .spacer {
-//     flex: 1;
-// }
-
-// /* Hide the normal nav-links on smaller screens */
-// .nav-links {
-//     display: flex;
-//     gap: 10px;
-// }
-
-// /* Hamburger button (hidden on large screens) */
-// .menu-btn {
-//     display: none;
-//     color: white;
-// }
-
-// /* Mobile Styles */
-// @media (max-width: 768px) {
-//     .menu-btn {
-//         display: block; /* Show menu button on small screens */
-//     }
-
-//     .nav-links {
-//         display: none;
-//         flex-direction: column;
-//         position: absolute;
-//         top: 64px;
-//         right: 0;
-//         background-color: #1976d2;
-//         width: 200px;
-//         padding: 10px;
-//         box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
-//     }
-
-//     .nav-links.open {
-//         display: flex; /* Show menu when open */
-//     }
-
-//     .nav-links button {
-//         width: 100%;
-//         text-align: left;
-//         padding: 10px;
-//         border-bottom: 1px solid rgba(255, 255, 255, 0.2);
-//     }
-// }
+.navbar-wrapper{
+    padding: 1rem 2rem !important;
+}

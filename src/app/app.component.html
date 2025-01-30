@@ -1,4 +1,4 @@
-<div *ngIf="!isEmployeeLoggedIn && !isAdminLoggedIn">
+<div *ngIf="!isEmployeeLoggedIn && !isAdminLoggedIn" class="navbar-wrapper">
   <mat-toolbar color="primary" class="navbar">
     <!--<span class="navbar-brand">TaskMaster</span> -->
     <div class="logo-container">
@@ -14,10 +14,20 @@
 
     <!-- Navigation Links -->
     <div class="nav-links" [ngClass]="{ open: isMenuOpen }">
-      <button mat-button routerLinkActive="active" routerLink="/signup">
+      <button
+        mat-button
+        class="nav-link"
+        routerLinkActive="active"
+        routerLink="/signup"
+      >
         Register
       </button>
-      <button mat-button routerLinkActive="active" routerLink="/login">
+      <button
+        mat-button
+        class="nav-link"
+        routerLinkActive="active"
+        routerLink="/login"
+      >
         Login
       </button>
     </div>
@@ -25,9 +35,12 @@
 </div>
 
 <!-- Repeat for Admin and Employee Navbar -->
-<div *ngIf="isAdminLoggedIn">
+<div *ngIf="isAdminLoggedIn" class="navbar-wrapper">
   <mat-toolbar color="primary" class="navbar">
-    <span class="navbar-brand">Admin</span>
+    <div class="logo-container">
+      <img src="/logo.png" alt="TaskMaster Logo" class="logo" />
+      <span class="navbar-brand">TaskMaster</span>
+    </div>
     <span class="spacer"></span>
 
     <button mat-icon-button class="menu-btn" (click)="toggleMenu()">
@@ -38,23 +51,44 @@
       <button
         mat-button
         routerLinkActive="active"
+        class="nav-link"
         routerLink="/admin/dashboard"
       >
         Dashboard
       </button>
-      <button mat-button routerLinkActive="active" routerLink="/admin/task">
+      <button
+        mat-button
+        class="nav-link"
+        routerLinkActive="active"
+        routerLink="/admin/task"
+      >
         Post Task
       </button>
-      <button mat-button routerLinkActive="active" (click)="logout()">
+      <button
+        mat-button
+        class="nav-link"
+        routerLinkActive="active"
+        (click)="logout()"
+      >
         Logout
+      </button>
+      <button
+        mat-button
+        class="nav-link notallowed"
+        style="cursor: not-allowed"
+      >
+        <span class="navbar-text">Admin</span>
       </button>
     </div>
   </mat-toolbar>
 </div>
 
-<div *ngIf="isEmployeeLoggedIn">
+<div *ngIf="isEmployeeLoggedIn" class="navbar-wrapper">
   <mat-toolbar color="primary" class="navbar">
-    <span class="navbar-brand">Employee</span>
+    <div class="logo-container">
+      <img src="/logo.png" alt="TaskMaster Logo" class="logo" />
+      <span class="navbar-brand">TaskMaster</span>
+    </div>
     <span class="spacer"></span>
 
     <button mat-icon-button class="menu-btn" (click)="toggleMenu()">
@@ -65,12 +99,25 @@
       <button
         mat-button
         routerLinkActive="active"
+        class="nav-link"
         routerLink="/employee/dashboard"
       >
         Dashboard
       </button>
-      <button mat-button routerLinkActive="active" (click)="logout()">
+      <button
+        mat-button
+        class="nav-link"
+        routerLinkActive="active"
+        (click)="logout()"
+      >
         Logout
+      </button>
+      <button
+        mat-button
+        class="nav-link notallowed"
+        style="cursor: not-allowed"
+      >
+        <span class="navbar-text">Employee</span>
       </button>
     </div>
   </mat-toolbar>
@@ -78,50 +125,27 @@
 
 <router-outlet></router-outlet>
 
-<!-- <div *ngIf="!isEmployeeLoggedIn && !isAdminLoggedIn">
-  <mat-toolbar color="primary" class="navbar">
-    <span class="navbar-brand">TaskMaster</span>
-    <span class="spacer"></span>
-    <button mat-button routerLinkActive="active" routerLink="/signup">
-      Register
-    </button>
-    <button mat-button routerLinkActive="active" routerLink="/login">
-      Login
-    </button>
-  </mat-toolbar>
-</div>
+<footer class="footer">
+  <div class="footer-container">
+    <!-- Logo & Description -->
+    <div class="footer-brand">
+      <img src="/logo.png" alt="TaskMaster Logo" class="footer-logo" />
+      <p class="footer-description">
+        TaskMaster is your go-to task management solution, helping teams stay
+        organized and productive with seamless collaboration.
+      </p>
+    </div>
 
-<div *ngIf="isAdminLoggedIn">
-  <mat-toolbar color="primary" class="navbar">
-    <span class="navbar-brand">Admin</span>
-    <span class="spacer"></span>
-    <button mat-button routerLinkActive="active" routerLink="/admin/dashboard">
-      Dashboard
-    </button>
-    <button mat-button routerLinkActive="active" routerLink="/admin/task">
-      Post Task
-    </button>
-    <button mat-button routerLinkActive="active" (click)="logout()">
-      Logout
-    </button>
-  </mat-toolbar>
-</div>
+    <!-- Navigation Links -->
+    <div class="footer-links">
+      <a routerLink="/home">Home</a>
+      <a routerLink="/about">About</a>
+      <a routerLink="/contact">Contact</a>
+    </div>
 
-<div *ngIf="isEmployeeLoggedIn">
-  <mat-toolbar color="primary" class="navbar">
-    <span class="navbar-brand">Employee</span>
-    <span class="spacer"></span>
-    <button
-      mat-button
-      routerLinkActive="active"
-      routerLink="/employee/dashboard"
-    >
-      Dashboard
-    </button>
-    <button mat-button routerLinkActive="active" (click)="logout()">
-      Logout
-    </button>
-  </mat-toolbar>
-</div>
-<router-outlet></router-outlet>
--->
+    <!-- Copyright Notice -->
+    <div class="footer-bottom">
+      <p>© {{ currentYear }} TaskMaster. By Sixtusdev - All rights reserved.</p>
+    </div>
+  </div>
+</footer>
