@@ -1,6 +1,6 @@
 // import { Component } from '@angular/core';
 import { Component } from '@angular/core';
-import { AdminService } from '../../services/admin.service';
+import { EmployeeService } from '../../services/employee.service';
 import { ActivatedRoute } from '@angular/router';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { CommonModule } from '@angular/common';
@@ -30,7 +30,6 @@ import { ReactiveFormsModule } from '@angular/forms'; // ✅ Import this
   ],
   templateUrl: './view-task-details.component.html',
   styleUrls: ['./view-task-details.component.scss'],
-  // encapsulation: ViewEncapsulation.None
 })
 export class ViewTaskDetailsComponent {
 
@@ -39,7 +38,8 @@ export class ViewTaskDetailsComponent {
   commentForm!: FormGroup;
   comments: any[] = [];
 
-  constructor(private service: AdminService, 
+
+  constructor(private service: EmployeeService, 
     private activatedRoute: ActivatedRoute, 
     private snackBar: MatSnackBar,
     private fb: FormBuilder

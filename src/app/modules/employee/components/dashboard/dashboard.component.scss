@@ -13,8 +13,8 @@
 .task-list {
     display: grid;
     grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
-    gap: 20px;
-    padding: 20px;
+    gap: 1.5rem;
+    padding: 20px 10px;
     
     .task-card {
       background-color: #fff;
@@ -93,10 +93,15 @@
                     transition: background-color 0.3s ease;
         
                     &.view-button {
-                    background-color: #e3f2fd;
-                    &:hover {
-                        background-color: #bbdefb;
-                    }
+                        background-color: #e3f2fd;
+                        margin-right: 0.5rem;
+                        border: none;
+                        color: #0d47a1;
+                        text-align: center;
+
+                        &:hover {
+                            background-color: #bbdefb;
+                        }
                     }
         
                     &.update-button {

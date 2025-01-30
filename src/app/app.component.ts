@@ -4,6 +4,7 @@ import { MatButtonModule } from '@angular/material/button';  // Import MatButton
 import { Router, RouterModule } from '@angular/router';             // Import RouterModule for routerLink
 import { StorageService } from './auth/services/storage/storage.service';
 import { CommonModule } from '@angular/common';
+import { MatIconModule } from "@angular/material/icon";
 
 @Component({
   selector: 'app-root',
@@ -13,6 +14,7 @@ import { CommonModule } from '@angular/common';
     MatButtonModule,
     RouterModule, // Required for routerLink
     CommonModule, // Add CommonModule
+    MatIconModule,
   ],
   templateUrl: './app.component.html',
   styleUrls: ['./app.component.scss'], // Ensure correct key
@@ -21,6 +23,12 @@ import { CommonModule } from '@angular/common';
 export class AppComponent {
   isEmployeeLoggedIn: boolean = StorageService.isEmployeeLoggedIn();
   isAdminLoggedIn: boolean = StorageService.isAdminLoggedIn();
+
+  isMenuOpen = false;
+  
+  toggleMenu() {
+    this.isMenuOpen = !this.isMenuOpen;
+  }
 
   constructor(private router: Router) {
     console.log('Employee Logged In:', this.isEmployeeLoggedIn);

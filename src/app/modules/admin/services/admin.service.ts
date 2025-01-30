@@ -41,13 +41,6 @@ export class AdminService {
     return this.http.get(BASE_URL + "api/admin/task/" + id, { headers: this.createAuthorizationHeader() });
   }
 
-  // New method for fetching paginated tasks
-  getPaginatedTasks(page: number, size: number): Observable<any> {
-    return this.http.get(
-      `${BASE_URL}api/admin/tasks?page=${page}&size=${size}`,
-      { headers: this.createAuthorizationHeader() }
-    );
-  }
 
   createComment(id: number, content: string): Observable<any> {
     const params = { content: content };
@@ -58,6 +51,14 @@ export class AdminService {
     return this.http.get(BASE_URL + "api/admin/comments/" + id, { headers: this.createAuthorizationHeader() });
   }
 
+  // New method for fetching paginated tasks
+  getPaginatedTasks(page: number, size: number): Observable<any> {
+    return this.http.get(
+      `${BASE_URL}api/admin/tasks?page=${page}&size=${size}`,
+      { headers: this.createAuthorizationHeader() }
+    );
+  }
+  
   private createAuthorizationHeader(): HttpHeaders {
     return new HttpHeaders().set('Authorization', 'Bearer ' + StorageService.getToken());
   }

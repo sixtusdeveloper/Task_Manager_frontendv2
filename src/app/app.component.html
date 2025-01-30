@@ -1,5 +1,85 @@
 <div *ngIf="!isEmployeeLoggedIn && !isAdminLoggedIn">
   <mat-toolbar color="primary" class="navbar">
+    <!--<span class="navbar-brand">TaskMaster</span> -->
+    <div class="logo-container">
+      <img src="/logo.png" alt="TaskMaster Logo" class="logo" />
+      <span class="navbar-brand">TaskMaster</span>
+    </div>
+    <span class="spacer"></span>
+
+    <!-- Toggle Menu Button -->
+    <button mat-icon-button class="menu-btn" (click)="toggleMenu()">
+      <mat-icon>{{ isMenuOpen ? "close" : "menu" }}</mat-icon>
+    </button>
+
+    <!-- Navigation Links -->
+    <div class="nav-links" [ngClass]="{ open: isMenuOpen }">
+      <button mat-button routerLinkActive="active" routerLink="/signup">
+        Register
+      </button>
+      <button mat-button routerLinkActive="active" routerLink="/login">
+        Login
+      </button>
+    </div>
+  </mat-toolbar>
+</div>
+
+<!-- Repeat for Admin and Employee Navbar -->
+<div *ngIf="isAdminLoggedIn">
+  <mat-toolbar color="primary" class="navbar">
+    <span class="navbar-brand">Admin</span>
+    <span class="spacer"></span>
+
+    <button mat-icon-button class="menu-btn" (click)="toggleMenu()">
+      <mat-icon>{{ isMenuOpen ? "close" : "menu" }}</mat-icon>
+    </button>
+
+    <div class="nav-links" [ngClass]="{ open: isMenuOpen }">
+      <button
+        mat-button
+        routerLinkActive="active"
+        routerLink="/admin/dashboard"
+      >
+        Dashboard
+      </button>
+      <button mat-button routerLinkActive="active" routerLink="/admin/task">
+        Post Task
+      </button>
+      <button mat-button routerLinkActive="active" (click)="logout()">
+        Logout
+      </button>
+    </div>
+  </mat-toolbar>
+</div>
+
+<div *ngIf="isEmployeeLoggedIn">
+  <mat-toolbar color="primary" class="navbar">
+    <span class="navbar-brand">Employee</span>
+    <span class="spacer"></span>
+
+    <button mat-icon-button class="menu-btn" (click)="toggleMenu()">
+      <mat-icon>{{ isMenuOpen ? "close" : "menu" }}</mat-icon>
+    </button>
+
+    <div class="nav-links" [ngClass]="{ open: isMenuOpen }">
+      <button
+        mat-button
+        routerLinkActive="active"
+        routerLink="/employee/dashboard"
+      >
+        Dashboard
+      </button>
+      <button mat-button routerLinkActive="active" (click)="logout()">
+        Logout
+      </button>
+    </div>
+  </mat-toolbar>
+</div>
+
+<router-outlet></router-outlet>
+
+<!-- <div *ngIf="!isEmployeeLoggedIn && !isAdminLoggedIn">
+  <mat-toolbar color="primary" class="navbar">
     <span class="navbar-brand">TaskMaster</span>
     <span class="spacer"></span>
     <button mat-button routerLinkActive="active" routerLink="/signup">
@@ -44,3 +124,4 @@
   </mat-toolbar>
 </div>
 <router-outlet></router-outlet>
+-->

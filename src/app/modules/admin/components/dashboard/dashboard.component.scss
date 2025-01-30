@@ -36,14 +36,13 @@
         margin: 1.5rem auto;
         font-size: 14px;
         color: #777;
-        
     }
 
     .task-list {
         display: grid;
         grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
-        gap: 1.3rem;
-        padding: 2rem 1.5rem;
+        gap: 1.5rem;
+        padding: 20px 10px;
 
         .mat-paginator {
             margin-top: 1rem;

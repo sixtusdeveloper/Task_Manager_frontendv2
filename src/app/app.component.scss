@@ -1,31 +1,165 @@
-.navbar{
+.navbar {
     display: flex;
     justify-content: space-between;
     align-items: center;
     padding: 0 1rem;
+    position: fixed;  // ✅ Makes navbar fixed
+    top: 0;           // ✅ Sticks to the top
+    left: 0;
+    width: 100%;      // ✅ Full width
+    z-index: 1000;    // ✅ Ensures it stays above other content
+    background-color: #1976d2; // Same as MatToolbar primary color
+    color: white;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1); // Optional shadow effect
 }
 
-.navbar-brand{
-    font-size: 1.5rem;
-    font-weight: medium;
-    margin-right: 1rem;
-}
+.logo-container {
+    display: flex;
+    align-items: center;
+  }
+  
+  .logo {
+    width: 40px; // Adjust the size as needed
+    height: auto;
+    margin-right: 6px;
+  }
+  
+  .navbar-brand {
+    font-size: 1.2rem;
+    font-weight: bold;
+    background: linear-gradient(45deg, #ff6b6b, #ffcc5c);
+    -webkit-background-clip: text;
+    background-clip: text;
+    -webkit-text-fill-color: transparent;
+  }
 
-.spacer{
+.spacer {
     flex: 1;
 }
 
-button{
+button {
     text-transform: uppercase;
     color: white;
     margin-left: 8px;
     cursor: pointer;
 }
 
-button.active{
+button.active {
    font-weight: 600;
 }
 
-.custom-toolbar{
+.custom-toolbar {
     background-color: #ff0000;
 }
+
+router-outlet {
+    margin-top: 64px;  // Prevents content from being hidden behind the fixed navbar
+    display: block;
+}
+
+/* Hamburger button (hidden on large screens) */
+.menu-btn {
+    display: none;
+    color: white;
+}
+
+/* Mobile Styles */
+@media (max-width: 768px) {
+    .menu-btn {
+        display: block; /* Show menu button on small screens */
+    }
+
+    .nav-links {
+        display: none;
+        flex-direction: column;
+        position: absolute;
+        top: 56px;
+        right: 0;
+        height: calc(100vh - 56px); // Fill the remaining height
+        background-color: #1976d2;
+        width: 200px;
+        padding: 10px;
+        box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+    }
+
+    .nav-links.open {
+        display: flex; /* Show menu when open */
+    }
+
+    .nav-links button {
+        width: 100%;
+        text-align: left;
+        padding: 10px;
+        border-bottom: 1px solid rgba(255, 255, 255, 0.2);
+    }
+}
+
+
+
+
+// .navbar {
+//     display: flex;
+//     justify-content: space-between;
+//     align-items: center;
+//     padding: 0 1rem;
+//     position: fixed;
+//     top: 0;
+//     left: 0;
+//     width: 100%;
+//     z-index: 1000;
+//     background-color: #1976d2;
+//     color: white;
+//     box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+// }
+
+// .navbar-brand {
+//     font-size: 1.5rem;
+//     font-weight: medium;
+//     margin-right: 1rem;
+// }
+
+// .spacer {
+//     flex: 1;
+// }
+
+// /* Hide the normal nav-links on smaller screens */
+// .nav-links {
+//     display: flex;
+//     gap: 10px;
+// }
+
+// /* Hamburger button (hidden on large screens) */
+// .menu-btn {
+//     display: none;
+//     color: white;
+// }
+
+// /* Mobile Styles */
+// @media (max-width: 768px) {
+//     .menu-btn {
+//         display: block; /* Show menu button on small screens */
+//     }
+
+//     .nav-links {
+//         display: none;
+//         flex-direction: column;
+//         position: absolute;
+//         top: 64px;
+//         right: 0;
+//         background-color: #1976d2;
+//         width: 200px;
+//         padding: 10px;
+//         box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+//     }
+
+//     .nav-links.open {
+//         display: flex; /* Show menu when open */
+//     }
+
+//     .nav-links button {
+//         width: 100%;
+//         text-align: left;
+//         padding: 10px;
+//         border-bottom: 1px solid rgba(255, 255, 255, 0.2);
+//     }
+// }
