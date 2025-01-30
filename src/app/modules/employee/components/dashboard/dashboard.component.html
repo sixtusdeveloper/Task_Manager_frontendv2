@@ -5,7 +5,9 @@
       <div class="task-details">
         <h2 class="task-name">{{ task.title }}</h2>
         <p class="task-description">{{ task.description }}</p>
+
         <mat-divider></mat-divider>
+
         <div class="task-info">
           <div class="info-row">
             <span class="info-label">Due Date:</span>
@@ -13,14 +15,23 @@
               task.dueDate | date : "MMM  d, y"
             }}</span>
           </div>
+
+          <mat-divider></mat-divider>
+
           <div class="info-row">
             <span class="info-label">Employee:</span>
             <span class="info-value">{{ task.employeeName }}</span>
           </div>
+
+          <mat-divider></mat-divider>
+
           <div class="info-row">
             <span class="info-label">Priority:</span>
             <span class="info-value">{{ task.priority }}</span>
           </div>
+
+          <mat-divider></mat-divider>
+
           <div class="info-row">
             <span class="info-label">Status:</span>
             <span class="info-value">{{ task.taskStatus }}</span>
@@ -28,6 +39,7 @@
         </div>
 
         <mat-divider></mat-divider>
+
         <div class="actions">
           <button
             mat-icon-button

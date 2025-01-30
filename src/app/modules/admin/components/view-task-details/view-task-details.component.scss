@@ -1,14 +1,24 @@
-
-.container{
+.container {
     padding: 2rem 1rem;
     background: #f9f9f9;
-    width: 100%;
+    width: 100%; // Prevents overflow
     margin: 0 auto;
     display: flex;
     flex-direction: column;
     align-items: center;
-   
-    .title{
+    overflow-x: hidden; // Hides any extra horizontal scroll
+
+    @media screen and (max-width: 768px) {
+        padding: 2rem;
+        
+    }
+
+    @media screen and (max-width: 568px) {
+        padding: 1rem;
+        
+    }
+
+    .title {
         font-size: 1.5rem;
         margin-bottom: 5px;
         color: #333;
@@ -16,76 +26,185 @@
         padding: 1.5rem;
         font-weight: bold;
     }
-.task-list {
-    display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
-    gap: 20px;
-    padding: 20px;
-    max-width: 60%;
-    margin: 0 auto;
-   
+
+    .task-list {
+        width: 100%;
+        max-width: 70%;
+        position: relative;
+        padding: 20px;
+        overflow-x: hidden; // Hides any overflowing content
+        margin: 0 auto;
+        box-sizing: border-box; // Prevents padding from increasing width
+
+        @media screen and (max-width: 768px) {
+            max-width: 85%;
+            
+        }
     
-    .task-card {
-      background-color: #fff;
-      border-radius: 8px;
-      box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
-      transition: transform 0.2s ease-in-out;
-      padding: 20px;
-      
-      &:hover {
-        transform: translateY(-5px);
-        box-shadow: 0 6px 15px rgba(0, 0, 0, 0.15);
-      }
-  
-       .task-details {
-            display: flex;
-            flex-direction: column;
-            gap: 10px;
-    
-            .task-name {
-                font-size: 1.25rem;
-                font-weight: bold;
-                margin: 0 0 0.5rem;
-                color: #3f51b5;
-                word-wrap: break-word;
+        @media screen and (max-width: 568px) {
+            max-width: 98%;
+            
+        }
+
+        .task-card {
+            width: 100%;
+            background-color: #fff;
+            border-radius: 8px;
+            box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+            transition: transform 0.2s ease-in-out;
+            padding: 20px;
+            overflow-x: hidden; // Prevents scroll if content overflows
+
+            &:hover {
+                transform: translateY(-5px);
+                box-shadow: 0 6px 15px rgba(0, 0, 0, 0.15);
             }
-    
-            .task-description {
-                font-size: 0.95rem;
-                color: #616161;
-                margin-bottom: 1rem;
-                line-height: 1.5;
-            }
-  
-            mat-divider {
-            margin: 10px 0;
-            }
-    
-            .task-info {
+
+            .task-details {
                 display: flex;
                 flex-direction: column;
-                gap: 8px;
-  
-                .info-row {
-                    display: flex;
-                    justify-content: space-between;
+                gap: 10px;
+
+                .task-name {
+                    font-size: 1.25rem;
+                    font-weight: bold;
+                    margin: 0 0 0.5rem;
+                    color: #3f51b5;
+                    word-wrap: break-word;
+                }
+
+                .task-description {
                     font-size: 0.95rem;
-                    color: #444;
-  
-                    .info-label {
-                    font-weight: 600;
-                    color: #555;
-                    }
-  
-                    .info-value {
-                    font-weight: 400;
-                    color: #777;
+                    color: #616161;
+                    margin-bottom: 1rem;
+                    line-height: 1.5;
+                }
+
+                mat-divider {
+                    margin: 10px 0;
+                }
+
+                .task-info {
+                    display: flex;
+                    flex-direction: column;
+                    gap: 8px;
+
+                    .info-row {
+                        display: flex;
+                        justify-content: space-between;
+                        font-size: 0.95rem;
+                        color: #444;
+
+                        .info-label {
+                            font-weight: 600;
+                            color: #555;
+                        }
+
+                        .info-value {
+                            font-weight: 400;
+                            color: #777;
+                        }
                     }
                 }
             }
-  
-           
         }
     }
-  }
+
+    // COMMENT CARD STYLING
+    .comment-card {
+        width: 100%;
+        max-width: 65%;
+        background-color: #ffffff;
+        border-radius: 8px;
+        box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+        padding: 20px;
+        margin-top: 2rem;
+        transition: transform 0.2s ease-in-out;
+        box-sizing: border-box;
+        overflow-x: hidden;
+
+        
+        @media screen and (max-width: 768px) {
+            max-width: 85%;
+            
+        }
+    
+        @media screen and (max-width: 568px) {
+            max-width: 95%;
+            
+        }
+
+        &:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 6px 15px rgba(0, 0, 0, 0.15);
+        }
+
+        mat-card-header {
+            display: flex;
+            flex-direction: column;
+            gap: 1rem;
+            overflow-x: hidden;
+        }
+
+        mat-card-title {
+            font-size: 1.2rem;
+            font-weight: bold;
+            color: #333;
+        }
+
+        mat-card-content {
+            display: flex;
+            flex-direction: column;
+            gap: 1rem;
+
+            .form-field {
+                width: 100%;
+                max-width: 100%;
+                display: flex;
+                flex-direction: column;
+                gap: 10px;
+
+                textarea {
+                    width: 100%;
+                    max-width: 100%;
+                    min-height: 80px;
+                    border: 1px solid #ccc;
+                    border-radius: 5px;
+                    padding: 10px;
+                    font-size: 1rem;
+                    font-family: inherit;
+                    resize: vertical;
+
+
+                    &:focus {
+                        border-color: #3f51b5;
+                        outline: none;
+                    }
+                }
+
+                button {
+                    align-self: flex-end;
+                    padding: 8px 16px;
+                    font-size: 1rem;
+                    font-weight: bold;
+                    background-color: #3f51b5;
+                    color: #fff;
+                    border: none;
+                    border-radius: 5px;
+                    cursor: pointer;
+                    transition: background 0.3s;
+
+
+                    &:hover {
+                        background-color: #2c3e9f;
+                    }
+
+                    &:disabled {
+                        background-color: #cccccc;
+                        cursor: not-allowed;
+                    }
+                }
+            }
+        }
+    }
 }
